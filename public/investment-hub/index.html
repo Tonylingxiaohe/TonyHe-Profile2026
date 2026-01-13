@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Private, sponsor-led residential development opportunities in Auckland. 北岸开发与投资平台·私人项目邀约" />
+  <title>Tony He | Investment Hub (Jan 2026)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a2e;
+      --panel2:#0f1930;
+      --text:#e8eefc;
+      --muted:#a9b6d6;
+      --line:rgba(255,255,255,.08);
+      --brand:#7dd3fc;
+      --brand2:#a78bfa;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --r:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 15% 0%, rgba(125,211,252,.18), transparent 55%),
+                  radial-gradient(900px 550px at 85% 10%, rgba(167,139,250,.18), transparent 50%),
+                  linear-gradient(180deg, #060a13 0%, var(--bg) 100%);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background: rgba(6,10,19,.55);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width: 240px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(125,211,252,.95), rgba(167,139,250,.95));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      display:grid; place-items:center;
+      font-weight:800; color:#0b1220;
+      letter-spacing:.2px;
+    }
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      line-height:1.2;
+    }
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .links{
+      display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .links a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .links a:hover{color:var(--text); border-color:var(--line); background: rgba(255,255,255,.03)}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(125,211,252,.16), rgba(167,139,250,.16));
+      box-shadow: 0 12px 34px rgba(0,0,0,.25);
+      font-weight:650;
+      font-size:13px;
+    }
+    .btn:hover{transform: translateY(-1px)}
+
+    .toggle{
+      display:flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px;
+      background: rgba(255,255,255,.03);
+    }
+    .tbtn{
+      cursor:pointer;
+      border:1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:650;
+      font-size:12px;
+    }
+    .tbtn.active{color:var(--text); border-color:var(--line); background: rgba(255,255,255,.05)}
+
+    /* Hero */
+    .hero{padding:44px 0 10px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    .hero h2{margin:0 0 10px; font-size:34px; line-height:1.15; letter-spacing:-.4px}
+    .sub{margin:0; color:var(--muted); font-size:15px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .kpi{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .kpi .n{font-weight:800; font-size:20px}
+    .kpi .l{color:var(--muted); font-size:12px; margin-top:4px}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:12px}
+    .section-title h3{margin:0; font-size:18px}
+    .section-title p{margin:0; color:var(--muted); font-size:13px}
+
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+
+    .list{margin:10px 0 0; padding:0; list-style:none}
+    .list li{
+      padding:10px 10px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.02);
+      margin-bottom:10px;
+      color:var(--muted);
+    }
+    .list li b{color:var(--text)}
+
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .project{
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      background: rgba(16,26,46,.65);
+      padding:16px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    .project h4{margin:0 0 8px; font-size:15px}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+    .muted{color:var(--muted)}
+
+    .callout{
+      border:1px dashed rgba(125,211,252,.35);
+      background: linear-gradient(135deg, rgba(125,211,252,.10), rgba(167,139,250,.10));
+      border-radius: var(--r);
+      padding:16px;
+    }
+
+    footer{padding:26px 0 40px; color:var(--muted); font-size:12px}
+
+    /* Bilingual handling */
+    [data-lang]{display:none}
+    html[data-lang="en"] [data-lang="en"]{display:block}
+    html[data-lang="zh"] [data-lang="zh"]{display:block}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr;}
+      .grid-3{grid-template-columns: 1fr;}
+      .grid-2{grid-template-columns: 1fr;}
+      .brand{min-width:auto}
+      .hero h2{font-size:30px}
+      .links{gap:8px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="logo">TH</div>
+        <div>
+          <h1>Tony He · Investment Hub</h1>
+          <p>Private, sponsor-led real estate opportunities · 2026</p>
+        </div>
+      </div>
+
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#approach">Approach</a>
+        <a href="#projects">Projects</a>
+        <a href="#structure">Structure</a>
+        <a href="#access">Access</a>
+
+        <span class="toggle" title="Language / 语言">
+          <button class="tbtn active" id="btn-en" type="button">EN</button>
+          <button class="tbtn" id="btn-zh" type="button">中文</button>
+        </span>
+
+        <a class="btn" href="#access">Request access</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="card">
+        <div class="pill">📍 Auckland · North Shore <span style="opacity:.7">•</span> Jan 2026</div>
+
+        <div data-lang="en">
+          <h2>North Shore Residential<br/>Development Investment Hub</h2>
+          <p class="sub">A private, sponsor-led platform curating development and income opportunities. Built for aligned investors who value execution, governance, and long-term partnership.</p>
+        </div>
+
+        <div data-lang="zh">
+          <h2>奥克兰北岸住宅开发<br/>投资平台（Investment Hub）</h2>
+          <p class="sub">私人邀约 · Sponsor 主导 · 精选项目。面向重视执行力、治理结构与长期合作的投资人。</p>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn" href="#access" style="background: linear-gradient(135deg, rgba(52,211,153,.16), rgba(125,211,252,.12));">Join Investor Club</a>
+          <span class="pill">✅ Sponsor co-invests (skin in the game)</span>
+        </div>
+
+        <div style="margin-top:16px" class="callout">
+          <div data-lang="en" class="muted">
+            <b style="color:var(--text)">Sponsor promote:</b> 15% to cap 30% of residual profits (excluding Sponsor’s pro-rata investor returns). Paid only after investor capital and agreed returns are distributed.
+          </div>
+          <div data-lang="zh" class="muted">
+            <b style="color:var(--text)">Sponsor 成功分成：</b> 剩余利润的 15% 起，最高不超过 30%（不包含 Sponsor 作为投资人按出资比例享有的收益）。仅在投资人本金及约定回报全部实现后分配。
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="background: linear-gradient(180deg, rgba(16,26,46,.75), rgba(16,26,46,.45));">
+        <div class="section-title" style="margin-bottom:10px">
+          <h3>Snapshot</h3>
+          <p>Quick facts</p>
+        </div>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="n">3</div>
+            <div class="l" data-lang="en">Completed / Successful Case Studies</div>
+            <div class="l" data-lang="zh">已完成 / 成功案例</div>
+          </div>
+          <div class="kpi">
+            <div class="n">Sponsor-led</div>
+            <div class="l" data-lang="en">Execution + governance focus</div>
+            <div class="l" data-lang="zh">执行力 + 治理结构优先</div>
+          </div>
+          <div class="kpi">
+            <div class="n">Private</div>
+            <div class="l" data-lang="en">Invitation-only opportunities</div>
+            <div class="l" data-lang="zh">仅限邀约的投资机会</div>
+          </div>
+          <div class="kpi">
+            <div class="n">Aligned</div>
+            <div class="l" data-lang="en">Sponsor co-invests alongside investors</div>
+            <div class="l" data-lang="zh">Sponsor 与投资人共同出资</div>
+          </div>
+        </div>
+        <div style="margin-top:14px" class="muted" data-lang="en">This page is designed for investor introductions. Detailed project packs are shared privately upon request.</div>
+        <div style="margin-top:14px" class="muted" data-lang="zh">本页用于投资人初步了解。完整项目资料包将按需私下提供。</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-title">
+        <h3 data-lang="en">About</h3>
+        <h3 data-lang="zh">关于平台</h3>
+        <p data-lang="en">Who we are & why this exists</p>
+        <p data-lang="zh">我们是谁，以及平台为何存在</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted">I operate sponsor-led residential development projects in Auckland’s North Shore. The platform exists to create repeatable governance, transparent reporting, and aligned incentives for long-term investor partnerships.</p>
+            <ul class="list">
+              <li><b>Curated deals</b> — selectivity over volume</li>
+              <li><b>Execution-first</b> — clear timelines, contractors, council process management</li>
+              <li><b>Alignment</b> — Sponsor co-invests alongside investors</li>
+            </ul>
+          </div>
+
+          <div data-lang="zh">
+            <p class="muted">我在奥克兰北岸操盘住宅开发项目。这个平台的目标是建立可复制的治理结构、透明汇报机制与利益一致的合作模式，让投资合作长期可持续。</p>
+            <ul class="list">
+              <li><b>精选项目</b> — 质量优先，不追求数量</li>
+              <li><b>执行优先</b> — 节点清晰、团队明确、合规流程可控</li>
+              <li><b>利益对齐</b> — Sponsor 与投资人共同出资</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted"><b>Typical opportunity types</b></p>
+            <div class="meta">
+              <span class="tag">Subdivision / intensification</span>
+              <span class="tag">Townhouses / terraces</span>
+              <span class="tag">Home & income</span>
+              <span class="tag">Value-add + consent pathway</span>
+            </div>
+            <p class="muted"><b>What investors receive</b></p>
+            <ul class="list">
+              <li><b>Project pack</b> (site, feasibility, risk notes)</li>
+              <li><b>Governance</b> (milestones, decision log)</li>
+              <li><b>Reporting</b> (monthly updates or milestone-based)</li>
+            </ul>
+          </div>
+
+          <div data-lang="zh">
+            <p class="muted"><b>常见项目类型</b></p>
+            <div class="meta">
+              <span class="tag">分割 / 强度提升</span>
+              <span class="tag">联排 / Townhouse</span>
+              <span class="tag">Home & Income</span>
+              <span class="tag">增值 + 合规路径</span>
+            </div>
+            <p class="muted"><b>投资人将获得</b></p>
+            <ul class="list">
+              <li><b>项目资料包</b>（地块、测算、风险要点）</li>
+              <li><b>治理结构</b>（节点、决策记录）</li>
+              <li><b>透明汇报</b>（月度或节点式）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-title">
+        <h3 data-lang="en">Approach</h3>
+        <h3 data-lang="zh">方法论</h3>
+        <p data-lang="en">How we source, evaluate, and execute</p>
+        <p data-lang="zh">如何找项目、做判断、并交付结果</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="project">
+          <h4 data-lang="en">1) Curate</h4>
+          <h4 data-lang="zh">1）甄选</h4>
+          <p class="muted" data-lang="en">Focus on sites with clear pathways: zoning, services, consent strategy, and realistic build program.</p>
+          <p class="muted" data-lang="zh">优先选择路径清晰的地块：规划、管线、合规策略，以及可落地的施工计划。</p>
+        </div>
+        <div class="project">
+          <h4 data-lang="en">2) De-risk</h4>
+          <h4 data-lang="zh">2）降风险</h4>
+          <p class="muted" data-lang="en">Feasibility, council + network utilities review, design coordination, and contractor sequencing.</p>
+          <p class="muted" data-lang="zh">测算 + 政府/公用事业审阅 + 设计协同 + 分包衔接，降低执行不确定性。</p>
+        </div>
+        <div class="project">
+          <h4 data-lang="en">3) Execute</h4>
+          <h4 data-lang="zh">3）交付</h4>
+          <p class="muted" data-lang="en">Milestone governance, transparent reporting, and practical site-level decision-making to keep timelines and quality.</p>
+          <p class="muted" data-lang="zh">以节点治理和透明汇报为核心，结合现场决策能力，保障进度与质量。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-title">
+        <h3 data-lang="en">Case Studies</h3>
+        <h3 data-lang="zh">成功案例</h3>
+        <p data-lang="en">3 completed examples (high-level)</p>
+        <p data-lang="zh">3 个已完成案例（仅展示概要）</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="project">
+          <div class="meta">
+            <span class="tag" data-lang="en">Completed</span>
+            <span class="tag" data-lang="zh">已完成</span>
+            <span class="tag">North Shore</span>
+          </div>
+          <h4>Case Study 01 — [Project Name]</h4>
+          <p class="muted" data-lang="en">Add 2–3 lines: site, strategy, outcome. (Optionally: IRR range / equity multiple if you wish to disclose.)</p>
+          <p class="muted" data-lang="zh">写 2–3 行：地块信息、策略、结果。（如可披露，可加入 IRR 区间 / 倍数。）</p>
+        </div>
+
+        <div class="project">
+          <div class="meta">
+            <span class="tag" data-lang="en">Completed</span>
+            <span class="tag" data-lang="zh">已完成</span>
+            <span class="tag">Auckland</span>
+          </div>
+          <h4>Case Study 02 — [Project Name]</h4>
+          <p class="muted" data-lang="en">Highlight: consent pathway, build sequencing, sales/exit, governance and reporting.</p>
+          <p class="muted" data-lang="zh">突出：合规路径、施工衔接、退出/销售、治理与汇报机制。</p>
+        </div>
+
+        <div class="project">
+          <div class="meta">
+            <span class="tag" data-lang="en">Completed</span>
+            <span class="tag" data-lang="zh">已完成</span>
+            <span class="tag">Residential</span>
+          </div>
+          <h4>Case Study 03 — [Project Name]</h4>
+          <p class="muted" data-lang="en">Add the most investor-relevant proof: timeline control, budget discipline, risk avoided.</p>
+          <p class="muted" data-lang="zh">加入投资人最关心的证明：工期控制、预算纪律、规避的关键风险。</p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px" class="callout">
+        <div data-lang="en" class="muted"><b style="color:var(--text)">Tip:</b> If you want, replace placeholders with your 3 real projects and add 1 line each for: timeframe, units, key approvals, exit result.</div>
+        <div data-lang="zh" class="muted"><b style="color:var(--text)">建议：</b>把占位内容换成你的三个真实项目，每个项目补充：周期、户数/类型、关键审批、退出结果。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRUCTURE -->
+  <section id="structure">
+    <div class="wrap">
+      <div class="section-title">
+        <h3 data-lang="en">Investment Structure</h3>
+        <h3 data-lang="zh">投资结构</h3>
+        <p data-lang="en">Aligned incentives and a clear waterfall</p>
+        <p data-lang="zh">利益对齐 + 清晰利润分配</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted"><b>Sponsor participation</b></p>
+            <ul class="list">
+              <li><b>Sponsor co-invests</b> as an equity investor on the same terms as other investors.</li>
+              <li><b>Promote</b>: 15% up to cap 30% of residual project profits (excluding Sponsor’s pro-rata investor returns).</li>
+              <li><b>Payable only after</b> all investor capital and agreed returns are distributed.</li>
+              <li>Promote rate is set <b>project-by-project</b> based on complexity, risk profile, and sponsor involvement.</li>
+            </ul>
+          </div>
+
+          <div data-lang="zh">
+            <p class="muted"><b>Sponsor 收益</b></p>
+            <ul class="list">
+              <li><b>Sponsor 共同出资</b>：作为投资人之一，与其他投资人按相同条件参与基础收益分配。</li>
+              <li><b>成功分成</b>：剩余利润 15% 起，最高不超过 30%（不包含 Sponsor 的出资比例收益）。</li>
+              <li><b>仅在</b> 投资人本金及约定回报全部实现后分配。</li>
+              <li>具体比例将根据项目复杂度、风险结构及参与深度 <b>逐项目确定</b>。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted"><b>Governance & reporting</b></p>
+            <ul class="list">
+              <li><b>Milestones</b>: acquisition, design, consent, build, practical completion, sales/exit.</li>
+              <li><b>Decision log</b>: key changes and approvals documented.</li>
+              <li><b>Updates</b>: monthly or milestone-based reporting.</li>
+              <li><b>Transparency</b>: budget tracking and risk register where applicable.</li>
+            </ul>
+          </div>
+
+          <div data-lang="zh">
+            <p class="muted"><b>治理与汇报</b></p>
+            <ul class="list">
+              <li><b>节点管理</b>：收购、设计、审批、施工、完工、销售/退出。</li>
+              <li><b>决策记录</b>：重要变更与批准均记录在案。</li>
+              <li><b>定期更新</b>：按月或按节点汇报。</li>
+              <li><b>透明机制</b>：预算跟踪与风险清单（视项目而定）。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS / CONTACT -->
+  <section id="access">
+    <div class="wrap">
+      <div class="section-title">
+        <h3 data-lang="en">Investor Access</h3>
+        <h3 data-lang="zh">投资入口</h3>
+        <p data-lang="en">Request project packs privately</p>
+        <p data-lang="zh">私下获取完整项目资料包</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted">For detailed opportunities, request access and we will share the current project pack (feasibility, timeline, risks, and proposed structure) under a private basis.</p>
+            <ul class="list">
+              <li><b>Email</b>: <a href="mailto:lingxiao_he_tony@hotmail.com">lingxiao_he_tony@hotmail.com</a></li>
+              <li><b>LinkedIn</b>: <span class="muted">(add your link)</span></li>
+              <li><b>Preferred</b>: 15-min intro call before sharing full packs.</li>
+            </ul>
+          </div>
+          <div data-lang="zh">
+            <p class="muted">如需了解具体投资机会，可申请私下获取资料包（测算、节点、风险要点、合作结构）。平台建议先进行 15 分钟简介沟通，再提供完整资料。</p>
+            <ul class="list">
+              <li><b>邮箱</b>：<a href="mailto:lingxiao_he_tony@hotmail.com">lingxiao_he_tony@hotmail.com</a></li>
+              <li><b>LinkedIn</b>：<span class="muted">（补充链接）</span></li>
+              <li><b>建议流程</b>：先短沟通，再共享完整资料包。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="box-shadow:none; background: rgba(255,255,255,.02)">
+          <div data-lang="en">
+            <p class="muted"><b>One-click email template</b></p>
+            <p class="muted">Click the button to open an email draft (you can edit it before sending).</p>
+            <a class="btn" id="mailtoBtn" href="#">Request Private Access</a>
+            <p class="muted" style="margin-top:12px"><b>Disclosure:</b> This website is for introductory purposes only and does not constitute an offer. Opportunities are shared privately and may be subject to eligibility and legal review.</p>
+          </div>
+
+          <div data-lang="zh">
+            <p class="muted"><b>一键邮件模板</b></p>
+            <p class="muted">点击按钮将自动生成邮件草稿（可自行修改后再发送）。</p>
+            <a class="btn" id="mailtoBtnZh" href="#">申请私密访问</a>
+            <p class="muted" style="margin-top:12px"><b>声明：</b>本页面仅用于介绍，不构成任何公开要约。具体机会将以私下方式提供，并可能需要合规与法律审核。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="muted">© 2026 Tony He · Investment Hub</div>
+      <div class="muted" style="margin-top:6px">Built for private introductions · Designed for GitHub Pages (single-file)</div>
+    </div>
+  </footer>
+
+  <script>
+    // Language toggle
+    const html = document.documentElement;
+    const btnEn = document.getElementById('btn-en');
+    const btnZh = document.getElementById('btn-zh');
+
+    function setLang(lang){
+      html.setAttribute('data-lang', lang);
+      localStorage.setItem('lang', lang);
+      btnEn.classList.toggle('active', lang === 'en');
+      btnZh.classList.toggle('active', lang === 'zh');
+    }
+
+    const saved = localStorage.getItem('lang');
+    setLang(saved || 'en');
+
+    btnEn.addEventListener('click', () => setLang('en'));
+    btnZh.addEventListener('click', () => setLang('zh'));
+
+    // Mailto helpers
+    const subjectEn = encodeURIComponent('Request Private Access — Investment Hub');
+    const bodyEn = encodeURIComponent(
+`Hi Tony,\n\nI would like to request private access to your current investment opportunities and project packs.\n\nName: \nLocation: \nInvestor profile (brief): \nPreferred call time (NZT): \n\nRegards,\n`
+    );
+
+    const subjectZh = encodeURIComponent('申请私密访问 — Investment Hub');
+    const bodyZh = encodeURIComponent(
+`Tony你好，\n\n我希望申请私密访问，了解你目前的投资机会与项目资料包。\n\n姓名：\n所在地：\n投资背景（简述）：\n方便通话时间（新西兰时间）：\n\n谢谢，\n`
+    );
+
+    const to = 'lingxiao_he_tony@hotmail.com';
+    const mailtoLinkEn = `mailto:${to}?subject=${subjectEn}&body=${bodyEn}`;
+    const mailtoLinkZh = `mailto:${to}?subject=${subjectZh}&body=${bodyZh}`;
+
+    const mailtoBtn = document.getElementById('mailtoBtn');
+    const mailtoBtnZh = document.getElementById('mailtoBtnZh');
+    if (mailtoBtn) mailtoBtn.href = mailtoLinkEn;
+    if (mailtoBtnZh) mailtoBtnZh.href = mailtoLinkZh;
+  </script>
+</body>
+</html>
